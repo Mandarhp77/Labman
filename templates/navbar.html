@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Library Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/books">Books</a>
+        </li>
+      </ul>
+      {% if user.is_authenticated %}
+      <h4 class="text-white bg-dark mr-3">{{fname}}</h4>
+      <div>
+        <a class="btn btn-info mr-3" href="/signout" role="button">Sign Out</a>
+      </div>
+      {% else %}
+      <div class="mx-2">
+        <h4 class="text-white bg-dark mr-3">{{m}}</h4>
+        <a class="btn btn-danger" href="/registration" role="button">Register</a>
+        <a class="btn btn-info" href="/signin" role="button">Login</a>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+{% for message in messages%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor%}
